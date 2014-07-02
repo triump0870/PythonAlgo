@@ -1,5 +1,5 @@
-string1 = raw_input()
-string2 = raw_input()
+string1 = list(raw_input())
+string2 = list(raw_input())
 def check(s1,s2):
 	if len(s1) != len(s2):
 		return False
@@ -7,9 +7,8 @@ def check(s1,s2):
 		s3 = []
 		for char in s1:
 			if char in s2:
-				s3.append(char)
-		a = s1.strip('\r')
-		b = ''.join(s3)
-		if a == b:
+				temp = s2.index(char)
+				s2.pop(temp)
+		if s2 == []:
 			return True
 print 'yes' if check(string1,string2) else 'No'

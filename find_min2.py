@@ -1,15 +1,20 @@
-import time
-start = time.time()
-a = [3,4,55,6,7,87,2,90,12,11,23,34,3453,2342,24,213,123,23,214,214,214,21421,421,4214,214,214,214,21,421,421,1,124,21,543,6,3,6,356,34,634,643,64,43545,346,124,3,414]
-for i in xrange(len(a)):
-	for j in xrange(i+1,len(a)):
-		if a[i]>a[j]:
-			temp = a[i]
-			a[i] = a[j]
-			a[j] = temp
-		
+import timeit
+from random import randrange
+def small(a):
+	amin = a[0]
+	for i in a:
+		issmallest = True
+		for j in a:
+			if i>j:
+				issmallest = False
+		if issmallest:
+			amin = i
+	return amin	
+for i in xrange(1000,10001,1000):
+	a = [randrange(100000) for x in range(i)]
+	t = timeit.Timer("small(a)","from __main__ import small,a")
+	p = t.timeit(number=10)
+	print "\nFor no. of element %d the program takes %10.5f seconds"%(i,p)
+	print "Min Element=",small(a)
 
-print a[0]
-end = time.time()
-elp = (end-start)*1000
-print 'time=%10.7f'%elp,"miliseconds"
+

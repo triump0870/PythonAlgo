@@ -1,0 +1,13 @@
+from fractions import gcd
+from timeit import Timer
+import timeit
+from random import randrange
+t = Timer("gcd(a,b)","from __main__ import a,b,gcd")
+sum = 0
+for i in xrange(1000000,100000001,1000000):
+	a = randrange(100000,1000001)
+	b = randrange(100000,1000001)
+	p = t.timeit(number = 10000)
+	sum += p
+	print "%d %5.5f miliseconds"%(i,p*1000)
+print "total time:",sum,"Seconds"

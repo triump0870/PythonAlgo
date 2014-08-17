@@ -10,5 +10,6 @@ def baseconverter(n,b):
 	while not m.isEmpty():
 		string = string + digits[m.pop()]
 	return string
-print baseconverter(233,8)
-print baseconverter(233,16)
+n = input('Enter the decemal no.:')
+b = input('Enter the base:')
+print baseconverter(n,b)

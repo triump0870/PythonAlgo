@@ -11,6 +11,7 @@ def infix_to_postfix(infix):
 	paren = "()"
 	infix = infix.split()
 	pre = {}
+	pre['^'] = 4
 	pre['*'] = 3
 	pre['/'] = 3
 	pre['+'] = 2
@@ -19,7 +20,6 @@ def infix_to_postfix(infix):
 
 	for j in infix:
 		if j in oprand:
-			print j
 			output.append(j)
 		elif j == '(':
 			opstack.push(j)
@@ -32,9 +32,8 @@ def infix_to_postfix(infix):
 			while not opstack.isEmpty() and pre[opstack.peek()] >= pre[j]:
 				top = opstack.pop()
 				output.append(top)
-				print top
 			opstack.push(j)
 	while not opstack.isEmpty():
 		output.append(opstack.pop())
-	return ' '.join(output)
-
+	return "\nPostfix Expression:", ' '.join(output),"\n"
+print ''.join(infix_to_postfix(raw_input("\nEnter the infix expression:")))

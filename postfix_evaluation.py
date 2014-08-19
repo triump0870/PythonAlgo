@@ -18,7 +18,9 @@ def evaluate(infix):
 
 def doMath(op,op1,op2):
 	"Return the result of the operation between operand1 and operand2."
-	if op == '*':
+	if op == '^':
+		return op1 ** op2
+	elif op == '*':
 		return op1 * op2
 	elif op == '/':
 		return op1/op2
